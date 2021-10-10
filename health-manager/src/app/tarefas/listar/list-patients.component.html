@@ -1,0 +1,83 @@
+<div class="row justify-content-end">
+    <div class="col-6">
+        <h1>Atendimento</h1>
+    </div>
+    <div class="col-6 ">
+        <a  [routerLink]="['/patients/newPatient']" class="btn btn-success w-50">
+            Novo
+        </a>
+    </div>
+</div>
+<div class="container">
+    <section class="row ">
+
+        <div *ngFor="let patient of patients" class="col-6 col-sm-6 col-md-3 col-lg-2 card p-0 mb-3 ">
+            <!-- <div *ngFor="let patient of patients" [ngIf]="patient.status == 'urgente'" class="col-6 col-sm-6 col-md-3 col-lg-2 card p-0 "> -->
+            <h5 class="card-header" [patientDone]="patient.status" [class.success]="!patient.done">
+                Paciente:<br> {{ patient.name }}</h5>
+            <div class="card-body">
+                <p *ngIf="patient.done" class="card-title ">Status: Atendido </p>
+                <p *ngIf="!patient.done" class="card-title ">Status: Pendente </p>
+
+                <input type="button" *ngIf="!patient.done && patient.status !== 'removed'" (click)="changePatientDone(patient)"
+                    class="btn btn-success w-100 mt-2" value="Concluir">
+
+                <input type="button" *ngIf="patient.done && patient.status !== 'removed'" (click)="changePatientDone(patient)"
+                    class="btn btn-outline-warning w-100 mt-2" value="Reverter">
+                   
+                <input type="button" *ngIf="patient.status == 'removed'"
+                    class="btn btn-outline-warning w-100 mt-2" value="Paciente removido">
+
+                <input type="button" *ngIf="patient.status != 'removed'" (click)="removeStatus(patient.id)"
+                    class="btn btn-outline-danger w-100 mt-2" value="Remover">
+                <input type="button" *ngIf="patient.status == 'removed'" (click)="removeStatus(patient.id)"
+                    class="btn btn-outline-info w-100 mt-2" value="Adicionar">
+
+
+                <input type="button" [routerLink]="'/patients/editPatient/'+patient.id" title="Editar" alt="Editar"
+                    class="btn btn-warning w-100 mt-2 " value="Editar">
+            </div>
+        </div>
+    </section>
+</div>
+<!-- 
+<table class="table table-hover">
+
+
+
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Atendido</th>
+            <th class="text-center">
+                <a [routerLink]="['/patients/newPatient']" class="btn btn-xs btn-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo
+                </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let patient of patients">
+
+            <td [patientDone]="patient.done" [class.success]="!patient.done">
+                {{ patient.name }}
+            </td>
+            <td style="width: 70px" class="text-center">
+                <input type="checkbox" (click)="changePatientDone(patient)" [value]="patient.id"
+                    [checked]="patient.done">
+            </td>
+            <td class="text-center" style="width: 200px">
+                <a [routerLink]="'/patients/editPatient/'+patient.id" title="Editar" alt="Editar"
+                    class="btn btn-xs btn-info">
+                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar
+                </a>
+                <a href="#" title="Remover" alt="Remover" (click)="deletePatient($event, patient)"
+                    class="btn btn-xs btn-danger">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remover
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table> -->
+
+<p *ngIf="patients.length==0">Nenhuma task cadastrada.</p>

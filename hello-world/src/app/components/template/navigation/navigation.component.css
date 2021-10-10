@@ -1,0 +1,26 @@
+
+
+.container-nav{
+}
+
+.sidenav{
+    background-color: #ff5650;
+    width: 200px;
+}
+
+.sidenav a{
+    color: whitesmoke;
+}
+
+.sidenav a:hover{
+    background-color: #c43f3b;
+}
+
+.sidenav i{
+    padding-right: 10px;
+}
+
+.content{
+    padding: 1rem;
+    background-color: white;
+}
