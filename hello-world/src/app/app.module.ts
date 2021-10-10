@@ -11,6 +11,7 @@ import { NavigationComponent } from './components/template/navigation/navigation
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HomeComponent } from './views/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
 import { QuizComponent } from './components/quiz/quiz.component';
@@ -37,7 +38,8 @@ import { QuizCardService } from './components/template/quiz-card/quiz-card.servi
     MatListModule,
     MatCardModule,
     AppRoutingModule, 
-    FormsModule
+    FormsModule,
+    MatProgressBarModule
   ],
   providers: [QuizCardService],
   bootstrap: [AppComponent]

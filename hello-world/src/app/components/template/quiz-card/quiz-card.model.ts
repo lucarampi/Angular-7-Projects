@@ -1,50 +1,25 @@
 export class Quiz {
     public id: number
     public question: string
-    public options: Options
+    public options: Option[]
 
-    constructor(id: number, question: string, options?:Options) {
+    constructor(id: number, question: string, options?: Option[]) {
 
         this.id = id
         this.question = question
-        this.options=options
+        this.options = options
     }
 
 
 }
 
-export class Options {
-    public q1: {
-        text: string
-        isAnswer: boolean
-    }
-    public q2: {
-        text: string
-        isAnswer: boolean
-    }
-    public q3: {
-        text: string
-        isAnswer: boolean
-    }
-    public q4: {
-        text: string
-        isAnswer: boolean
-    }
-    public q5: {
-        text: string
-        isAnswer: boolean
-    }
-    constructor(
-        q1?: { text: string, isAnswer: boolean },
-        q2?: { text: string, isAnswer: boolean },
-        q3?: { text: string, isAnswer: boolean },
-        q4?: { text: string, isAnswer: boolean },
-        q5?: { text: string, isAnswer: boolean }) {
+export class Option {
 
-        this.q1 = q1
-        this.q2 = q2
-        this.q3 = q3
-        this.q4 = q4
-        this.q5 = q5
+    public text: string
+    public isAnswer: boolean
+
+    constructor(text: string, isAnswer: boolean) {
+        this.text = text;
+        this.isAnswer = isAnswer;
     }
 }

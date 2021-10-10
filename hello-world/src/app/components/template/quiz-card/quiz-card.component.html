@@ -1,9 +1,40 @@
-<form #quizCardForm='ngForm' class="container">
-    <div>
+<form #quizCardForm='ngForm' class="container p-0">
 
-        <ul>
-            <li *ngFor="let quiz of quizzes" class="list-group-item list-group-item-action"></li>
-        </ul>
+    <div class="form-floating" *ngIf="progress<100">
+        <div class="row mb-3 p-3">
+            <div class="mb-3">{{curr_quiz.question}}</div>
+            <ul class="list-group p-0">
+                <!-- ,'list-group-item-success':quiz.isAnswer == true -->
+                <li *ngFor="let quiz of curr_quiz.options" class="list-group-item list-group-item-action"
+                    [ngClass]="{'list-group-item-success':answered == true && quiz.isAnswer  == true,'list-group-item-danger':answered == true && quiz.isAnswer  == false}"
+                    (click)="!answered && selectAnswer(quiz)">{{quiz.text}}</li>
+            </ul>
+        </div>
+        <div class="form-floating text-success" *ngIf="answered && isCorrect">
+            Resposta Correta!
+        </div>
+        <div class="form-floating text-warning" *ngIf="answered && !isCorrect">
+            Resposta Inorreta!
+        </div>
+        <div class="mt-3 mb-3 form-floating">
+            <input class="btn btn-dark w-100" type="button" name="nextQuestion" id="nextQuestion"
+                (click)="answered && nextQuestion()" value="Proxima pergunta">
+        </div>
+    </div>
 
+    <div class="form-floating" *ngIf="progress>=100">
+        <div class="display-6">Quiz concluido!</div>
+        <div class="text-center">
+            Voce acertou {{points}}% das perguntas.
+        </div>
+    </div>
+
+
+
+    <div class="form-floating">
+        <div class="progress">
+            <div class="progress-bar bg-danger p-0" role="progressbar" [ngStyle]="{'width': progress + '%'}"
+                aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+        </div>
     </div>
 </form>

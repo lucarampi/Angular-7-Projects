@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { Options, Quiz } from './quiz-card.model';
+import { Option, Quiz } from './quiz-card.model';
 
 @Injectable()
 export class QuizCardService {
   quizzes: Quiz[] = [
-    new Quiz(1, "questão 1?", new Options({ text: "Alternativa Errada 1", isAnswer: false }, { text: "Alternativa Errada 2", isAnswer: false }, { text: "Alternativa Correta 3", isAnswer: true }, { text: "Alternativa Errada 4", isAnswer: false }, { text: "Alternativa Errada 5", isAnswer: false },)),
-    new Quiz(1, "questão 2?"),
-    new Quiz(1, "questão 3?"),
-    new Quiz(1, "questão 4?"),
-    new Quiz(1, "questão 5?")
+    new Quiz(1, "questão 1?", [ new Option("Alternativa Errada 1", false),new Option(  "Alternativa Errada 2", false),new Option(  "Alternativa Correta 3", true),new Option(  "Alternativa Errada 4", false) ,new Option(  "Alternativa Errada 5", false)]),
+    new Quiz(2, "questão 2?", [ new Option("Alternativa Errada 1", false),new Option(  "Alternativa Errada 2", false),new Option(  "Alternativa Correta 3", true),new Option(  "Alternativa Errada 4", false) ,new Option(  "Alternativa Errada 5", false)]),
+    new Quiz(3, "questão 3?", [ new Option("Alternativa Errada 1", false),new Option(  "Alternativa Errada 2", false),new Option(  "Alternativa Correta 3", true),new Option(  "Alternativa Errada 4", false) ,new Option(  "Alternativa Errada 5", false)]),
+    new Quiz(4, "questão 4?", [ new Option("Alternativa Errada 1", false),new Option(  "Alternativa Errada 2", false),new Option(  "Alternativa Correta 3", true),new Option(  "Alternativa Errada 4", false) ,new Option(  "Alternativa Errada 5", false)]),
+    new Quiz(5, "questão 5?", [ new Option("Alternativa Errada 1", false),new Option(  "Alternativa Errada 2", false),new Option(  "Alternativa Correta 3", true),new Option(  "Alternativa Errada 4", false) ,new Option(  "Alternativa Errada 5", false)])
   ];
 
   constructor() { }
