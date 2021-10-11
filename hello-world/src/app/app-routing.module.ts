@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './views';
 import { QuizCardComponent } from './components';
 import { QuizComponent } from './components/quiz/quiz.component';
+import { HistoricComponent } from './views/historic/historic.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'quiz',
     component: QuizComponent
+  },
+  {
+    path: 'hist',
+    component: HistoricComponent
   }
 ];
 

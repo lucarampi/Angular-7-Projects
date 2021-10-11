@@ -1,11 +1,14 @@
 
 
 .container-nav{
+    padding-top: 64px;
+    padding-bottom: 64px;
 }
 
 .sidenav{
     background-color: #ff5650;
     width: 200px;
+    z-index: 999;
 }
 
 .sidenav a{

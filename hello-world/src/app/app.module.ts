@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule,LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -17,8 +19,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { FormsModule } from '@angular/forms';
 import { QuizCardService } from './components/template/quiz-card/quiz-card.service';
+import { HistoricComponent } from './views/historic/historic.component';
+import { HistoricService } from './views/historic/historic.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -28,7 +37,8 @@ import { QuizCardService } from './components/template/quiz-card/quiz-card.servi
     FooterComponent,
     NavigationComponent,
     HomeComponent,
-    QuizComponent
+    QuizComponent,
+    HistoricComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,9 +49,12 @@ import { QuizCardService } from './components/template/quiz-card/quiz-card.servi
     MatCardModule,
     AppRoutingModule, 
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  providers: [QuizCardService],
+  providers: [QuizCardService,HistoricService, { provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

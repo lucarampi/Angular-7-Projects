@@ -23,9 +23,13 @@
     </div>
 
     <div class="form-floating" *ngIf="progress>=100">
-        <div class="display-6">Quiz concluido!</div>
-        <div class="text-center">
+        <div class="display-6 mb-3">Quiz concluido!</div>
+        <div class="text-center mb-3">
             Voce acertou {{points}}% das perguntas.
+        </div>
+        <div class="row mb-3 justify-content-around align-middle">
+            <input class="col-4 btn btn-warning" type="button" value="Tentar Novamente" (click)="ngOnInit()">
+            <input class="col-4 btn btn-outline-dark" type="button" value="Ver histórico de tentativas" (click)="goToHistoric()">
         </div>
     </div>
 
